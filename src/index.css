@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --neon-blue: #00d4ff;
+  --neon-purple: #7c3aed;
+  --neon-pink: #ec4899;
+  --text-primary: #f0f0f5;
+  --text-secondary: #8888a0;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --particle-color: 0, 212, 255;
+  --particle-secondary: 124, 58, 237;
+}
+
+[data-theme="minimal"] {
+  --bg-primary: #f8f9fc;
+  --bg-secondary: #eef0f6;
+  --bg-card: rgba(0, 0, 0, 0.02);
+  --neon-blue: #0ea5e9;
+  --neon-purple: #6d28d9;
+  --neon-pink: #db2777;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --particle-color: 14, 165, 233;
+  --particle-secondary: 109, 40, 217;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Glass morphism */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="minimal"] .glass {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="minimal"] .glass-hover:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Neon text effect */
+.neon-text {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button styles */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient:hover::before {
+  opacity: 1;
+}
+
+.btn-gradient > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-gradient:hover {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-outline-glow {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-glow:hover {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+/* Timeline */
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, var(--neon-blue), var(--neon-purple), transparent);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--neon-blue), var(--neon-purple));
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: white;
+}
+
+/* Fonts */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
